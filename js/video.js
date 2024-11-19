@@ -1,6 +1,6 @@
 var video;
 
-let vid = document.getElementById("player1")
+let vid = document.getElementById("player1");
 
 window.addEventListener("load", function() {
 	console.log("Good job opening the window")
@@ -8,6 +8,7 @@ window.addEventListener("load", function() {
 	console.log("Autoplay is False")
 	vid.loop = false;
 	console.log("Loop is False")
+  vid.volume.innerHTML = video.volume
 });
 
 // document.querySelector("#play").addEventListener("click", function() {
@@ -57,20 +58,48 @@ speedUpButton.addEventListener("click", () => {
 
 /*Skip Ahead: Advance the current video by 10 seconds.  If the video length has been exceeded go back to the start of the video - no farther.   Log the current location of the video. */
 
+const skipAheadButton = document.getElementById("skip");
 
+skipAheadButton.addEventListener("click", () => {
+  let currentTime = vid.currentTime;
+  let newTime = currentTime + 10;
+  if (newTime > vid.duration){
+    vid.currentTime = 0;
+    console.log(newTime)
+  } else {
+    vid.currentTime = newTime;
+    console.log(newTime)
+  }
+});
 
 /*Mute: Mute/unmute the video and update the text in the button. */
 
+const muteButton = document.getElementById("mute");
+let volume = document.getElementById("volume")
 
+muteButton.addEventListener("click", () => {
+  let newVolume = vid.volume * 0;
+  vid.volume = newVolume;
+  console.log(newVolume)
+  volume.innerHTML = newVolume
+});
 
 /*Volume Slider: Change the volume based on the slider and update the volume information. */
 
-
+video.addEventListener('volumechange', () => {
+  let currentVolume = vid.volume;
+  volume.innerHTML = currentVolume;
+  console.log('Volume changed:', currentVolume);
+});
 
 
 /*Styled: Utilize the existing oldSchool class on the video element */
 
+const oldSchoolButton = document.getElementById("vintage");
 
+oldSchoolButton.addEventListener("click", () => {
+  let oldSchool = document.getElementById("vintage").style.cssText.oldSchool
+})
 
 
 /*Original: Remove the oldSchool class from the video. */
