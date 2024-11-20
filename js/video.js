@@ -84,10 +84,12 @@ muteButton.addEventListener("click", () => {
     vid.muted = false;
     console.log("100%");
     volume.innerHTML = "100%";
+    muteButton.innerHTML = "Mute";
   } else {
     vid.muted = true;
     console.log("0%");
     volume.innerHTML = "0%";
+    muteButton.innerHTML = "Unmute";
   }
 });
 
@@ -97,10 +99,10 @@ muteButton.addEventListener("click", () => {
 const volumeSlider = document.getElementById("slider");
 
 volumeSlider.addEventListener("input", function() {
-  vid.volume = this.value;
-  newVolume = vid.volume * 100;
+  let vidVolume = this.value;
+  newVolume = vidVolume;
   console.log(newVolume);
-  volume.innerHTML = newVolume;
+  volume.innerHTML = newVolume + "%";
 });
 
 
