@@ -99,6 +99,7 @@ muteButton.addEventListener("click", () => {
 const volumeSlider = document.getElementById("slider");
 
 volumeSlider.addEventListener("input", function() {
+  vid.volume = this.value;
   let vidVolume = this.value;
   newVolume = vidVolume;
   console.log(newVolume + "%");
