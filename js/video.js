@@ -9,9 +9,6 @@ window.addEventListener("load", function() {
 	console.log("Autoplay is False");
 	vid.loop = false;
 	console.log("Loop is False");
-  vid.volume = 1;
-  console.log(vid.volume);
-  volume.innerHTML = "100%";
 });
 
 // document.querySelector("#play").addEventListener("click", function() {
@@ -25,6 +22,9 @@ const playButton = document.getElementById("play");
 
 playButton.addEventListener("click", function() {
  vid.play();
+ vid.volume = 1;
+  console.log(vid.volume);
+  volume.innerHTML = "100%";
 });
 
 
@@ -80,14 +80,28 @@ skipAheadButton.addEventListener("click", () => {
 const muteButton = document.getElementById("mute");
 
 muteButton.addEventListener("click", () => {
-  vid.muted = true;
-  console.log("0%")
-  volume.innerHTML = "0%"
+  if (vid.muted) {
+    vid.muted = false;
+    console.log("100%");
+    volume.innerHTML = "100%";
+  } else {
+    vid.muted = true;
+    console.log("0%");
+    volume.innerHTML = "0%";
+  }
 });
 
 /*Volume Slider: Change the volume based on the slider and update the volume information. */
 
 
+const volumeSlider = document.getElementById("slider");
+
+volumeSlider.addEventListener("input", function() {
+  vid.volume = this.value;
+  newVolume = vid.volume * 100;
+  console.log(newVolume);
+  volume.innerHTML = newVolume;
+});
 
 
 /*Styled: Utilize the existing oldSchool class on the video element */
@@ -95,7 +109,7 @@ muteButton.addEventListener("click", () => {
 const oldSchoolButton = document.getElementById("vintage");
 
 oldSchoolButton.addEventListener("click", () => {
-  video.classList.add("oldSchool");
+  vid.classList.add("oldSchool");
 });
 
 
