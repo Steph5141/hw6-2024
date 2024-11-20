@@ -1,14 +1,17 @@
 var video;
 
 let vid = document.getElementById("player1");
+let volume = document.getElementById("volume")
 
 window.addEventListener("load", function() {
-	console.log("Good job opening the window")
+	console.log("Good job opening the window");
 	vid.autoplay = false;
-	console.log("Autoplay is False")
+	console.log("Autoplay is False");
 	vid.loop = false;
-	console.log("Loop is False")
-  vid.volume.innerHTML = video.volume
+	console.log("Loop is False");
+  vid.volume = 1;
+  console.log(vid.volume);
+  volume.innerHTML = "100%";
 });
 
 // document.querySelector("#play").addEventListener("click", function() {
@@ -75,22 +78,16 @@ skipAheadButton.addEventListener("click", () => {
 /*Mute: Mute/unmute the video and update the text in the button. */
 
 const muteButton = document.getElementById("mute");
-let volume = document.getElementById("volume")
 
 muteButton.addEventListener("click", () => {
-  let newVolume = vid.volume * 0;
-  vid.volume = newVolume;
-  console.log(newVolume)
-  volume.innerHTML = newVolume
+  vid.muted = true;
+  console.log("0%")
+  volume.innerHTML = "0%"
 });
 
 /*Volume Slider: Change the volume based on the slider and update the volume information. */
 
-video.addEventListener('volumechange', () => {
-  let currentVolume = vid.volume;
-  volume.innerHTML = currentVolume;
-  console.log('Volume changed:', currentVolume);
-});
+
 
 
 /*Styled: Utilize the existing oldSchool class on the video element */
@@ -98,9 +95,14 @@ video.addEventListener('volumechange', () => {
 const oldSchoolButton = document.getElementById("vintage");
 
 oldSchoolButton.addEventListener("click", () => {
-  let oldSchool = document.getElementById("vintage").style.cssText.oldSchool
-})
+  video.classList.add("oldSchool");
+});
 
 
 /*Original: Remove the oldSchool class from the video. */
 
+const originalButton = document.getElementById("orig");
+
+originalButton.addEventListener("click", () => {
+  vid.classList.remove("oldSchool");
+});
