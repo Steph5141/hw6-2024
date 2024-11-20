@@ -101,7 +101,7 @@ const volumeSlider = document.getElementById("slider");
 volumeSlider.addEventListener("input", function() {
   let vidVolume = this.value;
   newVolume = vidVolume;
-  console.log(newVolume);
+  console.log(newVolume + "%");
   volume.innerHTML = newVolume + "%";
 });
 
